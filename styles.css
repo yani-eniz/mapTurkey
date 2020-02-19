@@ -1,0 +1,38 @@
+#map {
+    width:1200px;
+    height: 584px;
+}
+
+form {
+    width: 400px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    background-color: white;
+    flex-basis: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+input{
+    width: 360px;
+    height: 30px;
+    margin-bottom: 20px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+
+}
+
+
+button{
+    width: 200px;
+    height: 40px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    background-color: #3CB371;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bolder;
+}
