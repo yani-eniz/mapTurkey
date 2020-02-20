@@ -12,6 +12,10 @@ let gridX;
 let gridY;
 let xAdept;
 let yAdept;
+let lng = 0.005;
+let lat = 0.0325342466;
+let startLng = 42;
+let startLat = 25;
 
 
     imageObj.onload = function () {
@@ -58,6 +62,7 @@ let yAdept;
     };
     canvas.onmouseup = function (event) {
         console.log(`x: ${x}, y: ${y}`);
+        console.log(`LNG: ${startLng - (lng * x)}, LAT: ${startLat+(lat * y)}`);
         let result = [];
         for (let i = 0; i < arrX.length; i++) {
             if (x <= arrX[i + 1] && x >= arrX[i]) {
