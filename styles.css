@@ -36,3 +36,25 @@ button{
     color: white;
     font-weight: bolder;
 }
+
+#plane {
+    bottom: 7px;
+    left: 12px;
+    position: absolute;
+}
+
+.pln {
+    width: 50px;
+    height: 50px;
+}
+
+#plane1 {
+    bottom: 7px;
+    left: 12px;
+    position: absolute;
+}
+
+.pln1 {
+    width: 50px;
+    height: 50px;
+}
