@@ -7,6 +7,7 @@
 </head>
 <body>
 <canvas id="map" width="1200px" height="584px"></canvas>
+<script src="papaparse.js"></script>
 <script src="mapGrid.js"></script>
 <FORM NAME="gridPositions" id="grid">
     <TABLE>
@@ -16,6 +17,14 @@
             <TD><INPUT NAME="gridY" SIZE=20"></TD></TR>
     </TABLE>
     <INPUT TYPE="button" VALUE="Accept" onClick="gridMap()">
+    <!--<INPUT TYPE="button" VALUE="Fly" onClick="goFly()">-->
 </FORM>
+    <div id="plane">
+        <img class="pln" src="plane.png">
+    </div>
+    <div id="plane1">
+        <img class="pln1" src="plane.png">
+    </div>
+    <script src="planeAnimation.js"></script>
 </body>
 </html>

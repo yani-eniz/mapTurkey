@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TurkishAirlines</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="libs/ol.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="libs/ol.js"></script>
+</head>
+<body>
+<canvas id="canvo" style=" position: absolute; z-index: 3; pointer-events: none"></canvas>
+<!--<div class="flight-animation" id="plane1">
+    <img class="plane" src="plane.png" />
+</div>
+<div class="flight-animation" id="plane2">
+    <img class="plane" src="plane.png" />
+</div>-->
+<div class="data-form">
+    <input type='file' accept='text/plain' onchange='openFile(event)' style="margin-top: 80px">
+    <input type="text" name="Y_s" id="Y_scale" value="12.4" style=""/>
+    <input type="text" name="X_s" id="X_scale" value="11.2" style="margin-top: 40px;"/>
+    <button onclick="changeScale()">Accept</button>
+    <button onclick="startFly();" style="margin-top: -78px;">Animation</button>
+</div>
+<div id="map" class="map"></div>
+<script src="livaMapAnimation.js"></script>
+
+</body>
+</html>

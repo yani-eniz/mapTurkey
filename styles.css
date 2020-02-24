@@ -1,4 +1,4 @@
-#map {
+/*#map {
     width:1200px;
     height: 584px;
 }
@@ -57,4 +57,59 @@ button{
 .pln1 {
     width: 50px;
     height: 50px;
+}*/
+
+.map {
+    height: 700px;
+    width: 100%;
+}
+
+.data-form{
+    width: 400px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid slategrey;
+    border-radius: 10px;
+    background-color: white;
+    flex-basis: auto;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 4;
+}
+
+input{
+    width: 360px;
+    height: 30px;
+    margin-bottom: 20px;
+    border: 1px solid slategrey;
+    border-radius: 5px;
+    z-index: 5;
+    position: absolute;
+
+}
+
+button{
+    width: 200px;
+    height: 40px;
+    border: 1px solid slategrey;
+    border-radius: 10px;
+    background-color: slategrey;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bolder;
+    position: absolute;
+    z-index: 6;
+    margin-top: -38px;
+}
+
+.plane {
+    width: 60px;
+    height: 60px;
+}
+
+.flight-animation {
+    position: absolute;
+    z-index: 5;
 }

@@ -44,9 +44,11 @@ function planeMooving(planeId, xx1, xx2, yy1, yy2, angle, speed) {
 }
 
 function goFly() {
-    planeMooving('plane', 1000, 300, 500, 300, 120, 10);
+    planeMooving('plane', 10, 800, 10, 500, 120, 10);
 
     planeMooving('plane1', 1100, 300, 200, 300, 100, 10);
+
+
 
 }
 
