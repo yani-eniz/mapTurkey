@@ -12,6 +12,10 @@ let animating = false;
 let speed, now;
 let VectorLayer = null;
 let iconFeatures = [];
+let iconFeatures1 = [];
+let arrLatLon = [];
+let individPlane = [];
+let project = [];
 speed=200;
 
 let map = new ol.Map({
@@ -62,51 +66,51 @@ function drawGrid(x_scale,y_scale) {
 
 function addLayerWithFlight(lat1,lat2,lon1,lon2){
     let iconFeature = new ol.Feature({
-        geometry: new ol.geom.Point(ol.proj.transform([29.3132, 40.9032], 'EPSG:4326',
-            'EPSG:3857')),
-        name: 'Flight',
-        population: 4000,
-        rainfall: 500
-    });
+    geometry: new ol.geom.Point(ol.proj.transform([29.3132, 40.9032], 'EPSG:4326',
+        'EPSG:3857')),
+    name: 'Flight',
+    population: 4000,
+    rainfall: 500
+});
 
-    var vectorSource = new ol.source.Vector({
-        features: iconFeatures
-    });
+var vectorSource = new ol.source.Vector({
+    features: iconFeatures
+});
 
-    iconStyle = new ol.style.Style({
-        image: new ol.style.Icon(({
-            anchor: [0.5, 0.5],
-            anchorXUnits: 'fraction',
-            anchorYUnits: 'pixels',
-            opacity: 1,
-            scale:0.09,
-            src: 'assets/img/plane1.png'
-        })),
+iconStyle = new ol.style.Style({
+    image: new ol.style.Icon(({
+        anchor: [0.5, -20],
+        anchorXUnits: 'fraction',
+        anchorYUnits: 'pixel',
+        opacity: 1,
+        scale:0.09,
+        src: 'assets/img/plane1.png'
+    })),
 
-        'route': new ol.style.Style({
-            stroke: new ol.style.Stroke({
-                width: 6, color: [237, 212, 0, 0.8]
-            })
+    'route': new ol.style.Style({
+        stroke: new ol.style.Stroke({
+            width: 6, color: [237, 212, 0, 0.8]
         })
-    });
+    })
+});
 
-    iconFeatures.push(iconFeature);
+iconFeatures.push(iconFeature);
 
 
-    var vectorSource = new ol.source.Vector({
-        features: iconFeatures,
-    });
+var vectorSource = new ol.source.Vector({
+    features: iconFeatures,
+});
 
-    VectorLayer = new ol.layer.Vector({
-        source: vectorSource,
-        style: iconStyle ,function(feature) {
-            if (animating && feature.get('type') === 'geoMarker') {
-                return null;
-            }
-            return styles[feature.get('type')];
+VectorLayer = new ol.layer.Vector({
+    source: vectorSource,
+    style: iconStyle ,function(feature) {
+        if (animating && feature.get('type') === 'geoMarker') {
+            return null;
         }
-    });
-    return VectorLayer;
+        return styles[feature.get('type')];
+    }
+});
+return VectorLayer;
 }
 
 let openFile = function(event) {
@@ -125,12 +129,15 @@ let openFile = function(event) {
 
 function createRouteFromArray(arrayOfJSON){
     locations= [];
-    for(i=0; i<arrayOfJSON.length;i++){
-        locations[i]= [arrayOfJSON[i].lon,arrayOfJSON[i].lat];
-        time[i]=arrayOfJSON[i].dati;
+    for(i = 0; i < arrayOfJSON.length; i++){
+        locations[i] = [arrayOfJSON[i].lon,arrayOfJSON[i].lat];
+        time[i] = arrayOfJSON[i].dati;
+        individPlane[i] = arrayOfJSON[i].f18
     }
-    console.log("lon/lat : "+locations);
-    console.log("time: "+time);
+
+    console.log(locations.length);
+    console.log(time[time.length-1] - time[0]);
+
 };
 
 function createPolyline(coordinates){
@@ -148,6 +155,7 @@ function createPolyline(coordinates){
         })
     });
 
+
     let newLayer = new ol.layer.Vector({
         source: Surce,
         style: darkStroke
@@ -158,11 +166,12 @@ function createPolyline(coordinates){
 function startFly(){
     let index=0;
     let current=time[0];
+    let pathLength=locations[0];
     let Trigger=true;
-    let id = setInterval(frame, 10)
+    let id = setInterval(frame, 1)
     function frame(){
-        console.log("current :" + current+" time :"+time[index] + " index :" +index)
-        if(current == time[index]){
+        console.log("current: " + current+" time: "+time[index] + " index: " +index)
+        if (current == time[index]) {
             ++index;
             iconFeatures[0].setGeometry(new ol.geom.Point(ol.proj.transform(locations[index], 'EPSG:4326',
                 'EPSG:3857')));
@@ -171,5 +180,72 @@ function startFly(){
             current++;
     }
 }
+
+let data = null;
+$.getJSON('assets/json/fullFlights.json', function(result) {
+    data = result;
+    for (let i = 0; i <= data.length - 1; i++) {
+        project.push(data[i]);
+    }
+    let used = {};
+
+     filtered = project.filter(function (obj) {
+        return obj.f18 in used ? 0: (used[obj.f18]=1);
+
+    });
+    for (let i = 0; i < filtered.length; i++){
+        console.log(filtered[i]['lat']);
+        planes(filtered[i]['lon'], filtered[i]['lat']);
+    }
+
+
+});
+function planes(lat,lon) {
+    let feauters=[];
+    var iFeature = new ol.Feature({
+
+        geometry: new ol.geom.Point(ol.proj.transform([lat, lon], 'EPSG:4326',
+            'EPSG:3857')),
+
+        name: 'Flight',
+
+        population: 4000,
+
+        rainfall: 500
+    });
+    feauters.push(iFeature);
+    var vSource = new ol.source.Vector({
+
+        features: feauters //add an array of features
+    });
+
+    iStyle = new ol.style.Style({
+
+        image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+
+            anchor: [0.4, 46],
+
+            anchorXUnits: 'fraction',
+
+            anchorYUnits: 'pixels',
+
+            opacity: 1,
+
+            scale:0.09,
+
+            src: 'assets/img/plane.png'
+
+        }))
+
+    });
+    var wLayer = new ol.layer.Vector({
+        source: vSource,
+        style: iStyle
+    });
+    map.addLayer(wLayer);
+}
+
+
+
 
 
