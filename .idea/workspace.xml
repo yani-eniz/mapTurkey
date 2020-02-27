@@ -31,6 +31,16 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/ProjectTurkey0.1" />
   </component>
+  <component name="RunManager">
+    <configuration name="training.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/assets/json/training.js" working-dir="$PROJECT_DIR$/assets/json">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.training.js" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -47,6 +57,8 @@
       <workItem from="1582618692572" duration="2996000" />
       <workItem from="1582622269387" duration="16028000" />
       <workItem from="1582719353596" duration="9614000" />
+      <workItem from="1582736496888" duration="3288000" />
+      <workItem from="1582795756972" duration="13405000" />
     </task>
     <servers />
   </component>
@@ -58,5 +70,25 @@
       <screen x="0" y="40" width="1536" height="824" />
     </state>
     <state x="549" y="207" key="FileChooserDialogImpl/0.40.1536.824@0.40.1536.824" timestamp="1582653455798" />
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1582740953290">
+      <screen x="0" y="40" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.40.1536.824@0.40.1536.824" timestamp="1582740953290" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1582740953290">
+      <screen x="0" y="40" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.40.1536.824@0.40.1536.824" timestamp="1582740953290" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1582740953289">
+      <screen x="0" y="40" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.40.1536.824@0.40.1536.824" timestamp="1582740953289" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1582740953290">
+      <screen x="0" y="40" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.40.1536.824@0.40.1536.824" timestamp="1582740953290" />
+    <state x="425" y="207" key="run.anything.popup" timestamp="1582808044450">
+      <screen x="0" y="40" width="1536" height="824" />
+    </state>
+    <state x="425" y="207" key="run.anything.popup/0.40.1536.824@0.40.1536.824" timestamp="1582808044450" />
   </component>
 </project>

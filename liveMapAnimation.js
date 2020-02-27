@@ -2,20 +2,22 @@ let canvas = document.getElementById('cnv');
 canvas.height = document.getElementById('map').offsetHeight;
 canvas.width = document.getElementById('map').offsetWidth;
 let ctx = canvas.getContext('2d');
+
 let JSONstirngs= null;
 let object=null;
 let iconStyle = null;
 let locations= [];
 let time = [];
-let fButton =  document.getElementById('fly');
 let animating = false;
 let speed, now;
 let VectorLayer = null;
 let iconFeatures = [];
-let iconFeatures1 = [];
-let arrLatLon = [];
 let individPlane = [];
 let project = [];
+let arrObj = [];
+let arrObjNew = [];
+let planeNames = [];
+let newFiltered = [];
 speed=200;
 
 let map = new ol.Map({
@@ -122,10 +124,10 @@ let openFile = function(event) {
         JSONstirngs=text;
         object= JSON.parse(JSONstirngs);
         createRouteFromArray(object);
-        createPolyline(locations);
     };
     reader.readAsText(input.files[0]);
 };
+
 
 function createRouteFromArray(arrayOfJSON){
     locations= [];
@@ -134,9 +136,6 @@ function createRouteFromArray(arrayOfJSON){
         time[i] = arrayOfJSON[i].dati;
         individPlane[i] = arrayOfJSON[i].f18
     }
-
-    console.log(locations.length);
-    console.log(time[time.length-1] - time[0]);
 
 };
 
@@ -185,20 +184,56 @@ let data = null;
 $.getJSON('assets/json/fullFlights.json', function(result) {
     data = result;
     for (let i = 0; i <= data.length - 1; i++) {
-        project.push(data[i]);
+            project.push(data[i]);
     }
     let used = {};
 
-     filtered = project.filter(function (obj) {
-        return obj.f18 in used ? 0: (used[obj.f18]=1);
+    filtered = data.filter(function (obj) {
+        return obj.f15 in used ? 0: (used[obj.f15]=1);
 
     });
     for (let i = 0; i < filtered.length; i++){
-        console.log(filtered[i]['lat']);
-        planes(filtered[i]['lon'], filtered[i]['lat']);
+        if (filtered[i]['f15'] != '') {
+            newFiltered.push(filtered[i]);
+        }
+
+    }
+    console.log(newFiltered);
+    for (let i = 0; i < newFiltered.length; i++) {
+        planes(newFiltered[i]['lon'], newFiltered[i]['lat']);
     }
 
+    for (let i = 0; i < project.length; i++) {
+        arrObj[i] = {
+            name: '',
+            startPonts: [],
+            startTime: []
+        };
+    }
+    for (let i = 0; i < project.length; i++) {
+        if (planeNames.indexOf(project[i]['f15']) == (-1)) {
+            planeNames.push(project[i]['f15']);
+            arrObj[i].startPonts.push(project[i]['lat'], project[i]['lon']);
+            arrObj[i].startTime.push(project[i]['dati']);
 
+        } else {
+            arrObj[planeNames.indexOf(project[i]['f15'])].startPonts.push(project[i]['lat'], project[i]['lon']);
+            arrObj[planeNames.indexOf(project[i]['f15'])].startTime.push(project[i]['dati']);
+        }
+    }
+    for (let i = 0; i < planeNames.length; i++) {
+        arrObj[i].name = planeNames[i];
+    }
+    for (let i = 0; i < arrObj.length; i++) {
+        if (arrObj[i].name != '') {
+            arrObjNew[i] = arrObj[i];
+        }
+    }
+    console.log(arrObjNew);
+    console.log(arrObjNew[1].startPonts);
+    for (let i = 0; i < arrObjNew.length; i++) {
+        createPolyline(arrObjNew[i].startPonts);
+    }
 });
 function planes(lat,lon) {
     let feauters=[];
@@ -244,6 +279,7 @@ function planes(lat,lon) {
     });
     map.addLayer(wLayer);
 }
+
 
 
 
