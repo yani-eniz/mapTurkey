@@ -29,7 +29,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/ProjectTurkey0.1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
     <configuration name="training.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/assets/json/training.js" working-dir="$PROJECT_DIR$/assets/json">
@@ -58,7 +58,12 @@
       <workItem from="1582622269387" duration="16028000" />
       <workItem from="1582719353596" duration="9614000" />
       <workItem from="1582736496888" duration="3288000" />
-      <workItem from="1582795756972" duration="13405000" />
+      <workItem from="1582795756972" duration="13755000" />
+      <workItem from="1582886085329" duration="6112000" />
+      <workItem from="1582912646520" duration="803000" />
+      <workItem from="1583072846277" duration="4972000" />
+      <workItem from="1583139975726" duration="2202000" />
+      <workItem from="1583166293982" duration="25000" />
     </task>
     <servers />
   </component>
@@ -66,10 +71,14 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="207" key="FileChooserDialogImpl" timestamp="1582653455798">
+    <state x="499" y="199" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583074984017">
       <screen x="0" y="40" width="1536" height="824" />
     </state>
-    <state x="549" y="207" key="FileChooserDialogImpl/0.40.1536.824@0.40.1536.824" timestamp="1582653455798" />
+    <state x="499" y="199" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.40.1536.824@0.40.1536.824" timestamp="1583074984017" />
+    <state x="549" y="207" key="FileChooserDialogImpl" timestamp="1582912674898">
+      <screen x="0" y="40" width="1536" height="824" />
+    </state>
+    <state x="549" y="207" key="FileChooserDialogImpl/0.40.1536.824@0.40.1536.824" timestamp="1582912674898" />
     <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1582740953290">
       <screen x="0" y="40" width="1536" height="824" />
     </state>
@@ -90,5 +99,9 @@
       <screen x="0" y="40" width="1536" height="824" />
     </state>
     <state x="425" y="207" key="run.anything.popup/0.40.1536.824@0.40.1536.824" timestamp="1582808044450" />
+    <state x="431" y="185" key="search.everywhere.popup" timestamp="1582889599158">
+      <screen x="0" y="40" width="1536" height="824" />
+    </state>
+    <state x="431" y="185" key="search.everywhere.popup/0.40.1536.824@0.40.1536.824" timestamp="1582889599158" />
   </component>
 </project>

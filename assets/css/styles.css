@@ -1,64 +1,3 @@
-/*#map {
-    width:1200px;
-    height: 584px;
-}
-
-form {
-    width: 400px;
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid lightgrey;
-    border-radius: 10px;
-    background-color: white;
-    flex-basis: auto;
-    justify-content: center;
-    align-items: center;
-}
-
-input{
-    width: 360px;
-    height: 30px;
-    margin-bottom: 20px;
-    border: 1px solid lightgrey;
-    border-radius: 5px;
-
-}
-
-
-button{
-    width: 200px;
-    height: 40px;
-    border: 1px solid lightgrey;
-    border-radius: 10px;
-    background-color: #3CB371;
-    text-transform: uppercase;
-    color: white;
-    font-weight: bolder;
-}
-
-#plane {
-    bottom: 7px;
-    left: 12px;
-    position: absolute;
-}
-
-.pln {
-    width: 50px;
-    height: 50px;
-}
-
-#plane1 {
-    bottom: 7px;
-    left: 12px;
-    position: absolute;
-}
-
-.pln1 {
-    width: 50px;
-    height: 50px;
-}*/
-
 .map {
     height: 700px;
     width: 100%;
@@ -66,7 +5,7 @@ button{
 
 .data-form{
     width: 400px;
-    height: 200px;
+    height: 380px;
     display: flex;
     flex-direction: column;
     border: 1px solid slategrey;
@@ -82,7 +21,7 @@ button{
 input{
     width: 360px;
     height: 30px;
-    margin-bottom: 20px;
+    margin-bottom: -70px;
     border: 1px solid slategrey;
     border-radius: 5px;
     z-index: 5;
@@ -92,7 +31,7 @@ input{
 
 button{
     width: 200px;
-    height: 40px;
+    height: 30px;
     border: 1px solid slategrey;
     border-radius: 10px;
     background-color: slategrey;
@@ -101,7 +40,7 @@ button{
     font-weight: bolder;
     position: absolute;
     z-index: 6;
-    margin-top: -38px;
+    margin-top: -80px;
 }
 
 .plane {
@@ -109,7 +48,7 @@ button{
     height: 60px;
 }
 
-.flight-animation {
-    position: absolute;
-    z-index: 5;
+
+select {
+    margin-top: 300px;
 }
