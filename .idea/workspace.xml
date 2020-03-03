@@ -31,12 +31,16 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Node.js.getAngle.js">
+    <configuration name="getAngle.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/getAngle.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
     <configuration name="training.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/assets/json/training.js" working-dir="$PROJECT_DIR$/assets/json">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.getAngle.js" />
         <item itemvalue="Node.js.training.js" />
       </list>
     </recent_temporary>
@@ -64,6 +68,10 @@
       <workItem from="1583072846277" duration="4972000" />
       <workItem from="1583139975726" duration="2202000" />
       <workItem from="1583166293982" duration="25000" />
+      <workItem from="1583221936313" duration="907000" />
+      <workItem from="1583227839101" duration="6938000" />
+      <workItem from="1583238253746" duration="619000" />
+      <workItem from="1583248687400" duration="1176000" />
     </task>
     <servers />
   </component>
@@ -75,30 +83,34 @@
       <screen x="0" y="40" width="1536" height="824" />
     </state>
     <state x="499" y="199" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.40.1536.824@0.40.1536.824" timestamp="1583074984017" />
+    <state x="496" y="127" key="#getAngle.js" timestamp="1583227824256">
+      <screen x="0" y="40" width="1536" height="824" />
+    </state>
+    <state x="496" y="127" key="#getAngle.js/0.40.1536.824@0.40.1536.824" timestamp="1583227824256" />
     <state x="549" y="207" key="FileChooserDialogImpl" timestamp="1582912674898">
       <screen x="0" y="40" width="1536" height="824" />
     </state>
     <state x="549" y="207" key="FileChooserDialogImpl/0.40.1536.824@0.40.1536.824" timestamp="1582912674898" />
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1582740953290">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1583235029794">
       <screen x="0" y="40" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.40.1536.824@0.40.1536.824" timestamp="1582740953290" />
-    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1582740953290">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.40.1536.824@0.40.1536.824" timestamp="1583235029794" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1583235029794">
       <screen x="0" y="40" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.center/0.40.1536.824@0.40.1536.824" timestamp="1582740953290" />
-    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1582740953289">
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.40.1536.824@0.40.1536.824" timestamp="1583235029794" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1583235029794">
       <screen x="0" y="40" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.left/0.40.1536.824@0.40.1536.824" timestamp="1582740953289" />
-    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1582740953290">
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.40.1536.824@0.40.1536.824" timestamp="1583235029794" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1583235029794">
       <screen x="0" y="40" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.right/0.40.1536.824@0.40.1536.824" timestamp="1582740953290" />
-    <state x="425" y="207" key="run.anything.popup" timestamp="1582808044450">
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.40.1536.824@0.40.1536.824" timestamp="1583235029794" />
+    <state x="425" y="206" key="run.anything.popup" timestamp="1583228421246">
       <screen x="0" y="40" width="1536" height="824" />
     </state>
-    <state x="425" y="207" key="run.anything.popup/0.40.1536.824@0.40.1536.824" timestamp="1582808044450" />
+    <state x="425" y="206" key="run.anything.popup/0.40.1536.824@0.40.1536.824" timestamp="1583228421246" />
     <state x="431" y="185" key="search.everywhere.popup" timestamp="1582889599158">
       <screen x="0" y="40" width="1536" height="824" />
     </state>

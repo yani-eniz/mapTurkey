@@ -19,6 +19,7 @@ class Planes{
     constructor(Name){
         this.name=Name;
         this.Dati=[];
+        this.NewDati =[];
         this.LatLon=[];
         this.FeatureLink=null;
     }
@@ -31,6 +32,15 @@ var map = new ol.Map({
     layers: [
         new ol.layer.Tile({
             source: new ol.source.OSM()
+        }),
+        new ol.layer.Graticule({
+            strokeStyle: new ol.style.Stroke({
+                color: 'green',
+                width: 2,
+                lineDash: [0.5,4]
+            }),
+            showLabels: true,
+            wrapX: false
         })
     ],
     view: new ol.View({
@@ -77,10 +87,14 @@ let openFile = function(event) {
         JSONstirngs=text;
         objectParsedJSON= JSON.parse(JSONstirngs);
         SortingOf(objectParsedJSON);
+        changeTime();
         let ind=0;
-        planes.forEach(element=>{element.FeatureLink = addPlane(element.LatLon[0][0],element.LatLon[0][1]);
-            createPolyline(element.LatLon);
-            console.log(" Name: " + element.name+" "+" Position: "+element.LatLon + "Time :" + element.Dati);
+        planes.forEach(element=>{
+            if(element.NewDati.length != 0){
+                element.FeatureLink = addPlane(element.LatLon[0][0],element.LatLon[0][1]);
+                createPolyline(element.LatLon);
+                console.log(" Name: " + element.name+" "+" Position: "+element.LatLon + "Time :" + element.NewDati);
+            }
             ind++;
         });
     };
@@ -91,10 +105,6 @@ let openFile = function(event) {
 function SortingOf(arrJSON) {
     StartTime=arrJSON[0].dati;
     EndTime = arrJSON[arrJSON.length-1].dati;
-    epoch_start = document.getElementById("epoch_start").value;
-    epoch_end = document.getElementById("epoch_end").value;
-    newEpoch_start = parseInt(epoch_start);
-    newEpoch_end = parseInt(epoch_end);
     for(let i = 0; i < arrJSON.length; i++){
         if(planeNames.indexOf(arrJSON[i].f15)==(-1) && arrJSON[i].f15!=""){
             planeNames.push(arrJSON[i].f15);
@@ -139,9 +149,17 @@ function startFly() {
     let id = setInterval(frame, delay)
     function frame(){
         planes.forEach(element=>{
-            if(element.Dati.indexOf(CurrentTime.toString())!=(-1)){
-                element.FeatureLink.setGeometry(new ol.geom.Point(ol.proj.transform(element.LatLon[element.Dati.indexOf(CurrentTime.toString())], 'EPSG:4326','EPSG:3857')));
-                console.log(element.Dati.indexOf(CurrentTime.toString())+"  current time: " + CurrentTime +"  End time: "+ EndTime);
+            if(element.NewDati.indexOf(CurrentTime.toString())!=(-1)){
+                let point1 = new ol.geom.Point(ol.proj.transform(element.LatLon[element.NewDati.indexOf(CurrentTime.toString())], 'EPSG:4326','EPSG:3857'));
+                let point2 = new ol.geom.Point(ol.proj.transform(element.LatLon[element.NewDati.indexOf(CurrentTime.toString())+1], 'EPSG:4326','EPSG:3857'));
+                let x = point2.getCoordinates()[0]-point1.getCoordinates()[0];
+                let y = point2.getCoordinates()[1]-point1.getCoordinates()[1];;
+                let angle = Math.atan2(x,y) - 89.5;
+
+                element.FeatureLink.getStyle().getImage().setRotation(angle);
+                element.FeatureLink.setGeometry(new ol.geom.Point(ol.proj.transform(element.LatLon[element.NewDati.indexOf(CurrentTime.toString())], 'EPSG:4326','EPSG:3857')));
+
+                console.log(element.NewDati.indexOf(CurrentTime.toString())+"  current time: " + CurrentTime +"  End time: "+ EndTime);
             }
         });
         CurrentTime++;
@@ -200,3 +218,19 @@ function addPlane(lat,lon) {
     }
     return iFeature;
 }
+
+function changeTime() {
+    epoch_start = document.getElementById("epoch_start").value;
+    epoch_end = document.getElementById("epoch_end").value;
+    newEpoch_start = parseInt(epoch_start);
+    newEpoch_end = parseInt(epoch_end);
+    for (let i = 0; i < planes.length; i++) {
+        if (planes[i].Dati[0] >= newEpoch_start && planes[i].Dati[planes[i].Dati.length - 1] <= newEpoch_end) {
+            for (let k = 0; k < planes[i].Dati.length; k++) {
+                planes[i].NewDati.push(planes[i].Dati[k]);
+            }
+
+        }
+    }
+}
+
