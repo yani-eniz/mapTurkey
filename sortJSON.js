@@ -1,3 +1,4 @@
+/*
 var homes = [
     {"h_id":"3",
         "city":"Dallas",
@@ -26,4 +27,11 @@ let filtered = homes.filter(function (obj) {
     return obj.price in used ? 0: (used[obj.price]=1);
 
 });
-console.log(filtered);
+console.log(filtered);*/
+let latVisibility = 32.4854;
+let lonVisibility = 40.6084;
+let latRadar = 34.334;
+let lonRadar = 41.731;
+
+let rad = Math.sqrt(Math.pow(latRadar-latVisibility, 2) + Math.pow(lonRadar - lonVisibility, 2));
+console.log(rad);

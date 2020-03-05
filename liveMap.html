@@ -9,13 +9,15 @@
 <canvas id='cnv' style=" position: absolute; z-index: 3; pointer-events: none; "></canvas>
 <div class="data-form">
     <p style="margin-top: -10px">Changing the size of the plane</p>
-    <input type="range" id="r1" style="margin-top: -150px;">
+    <input type="range" id="range" style="margin-top: -150px;">
     <input type='file' accept='text/plain' onchange='openFile(event)' style="margin-top: 120px">
     <input type="text" name="Y_s" id="Y_scale" value="12.4" style=""/>
     <input type="text" name="X_s" id="X_scale" value="11.2" style="margin-top: -40px;"/>
     <input type="text" name="epoch1" id="epoch_start" placeholder="epoch1" style="margin-top: 40px;" />
     <input type="text" name="epoch2" id="epoch_end" placeholder="epoch2" style="margin-top: 80px;" />
     <select id="delay">
+        <option value="0.1">1</option>
+        <option value="10">10</option>
         <option value="50">50</option>
         <option value="400">400</option>
         <option value="500">500</option>

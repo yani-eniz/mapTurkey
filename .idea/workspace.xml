@@ -31,8 +31,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="Node.js.getAngle.js">
+  <component name="RunManager" selected="Node.js.sortJSON.js">
     <configuration name="getAngle.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/getAngle.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="sortJSON.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/sortJSON.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="training.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/assets/json/training.js" working-dir="$PROJECT_DIR$/assets/json">
@@ -40,6 +43,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.sortJSON.js" />
         <item itemvalue="Node.js.getAngle.js" />
         <item itemvalue="Node.js.training.js" />
       </list>
@@ -71,7 +75,16 @@
       <workItem from="1583221936313" duration="907000" />
       <workItem from="1583227839101" duration="6938000" />
       <workItem from="1583238253746" duration="619000" />
-      <workItem from="1583248687400" duration="1176000" />
+      <workItem from="1583248687400" duration="1828000" />
+      <workItem from="1583308015984" duration="2325000" />
+      <workItem from="1583311901859" duration="13871000" />
+      <workItem from="1583330399404" duration="115000" />
+      <workItem from="1583331941809" duration="1464000" />
+      <workItem from="1583341899414" duration="3230000" />
+      <workItem from="1583393894582" duration="6459000" />
+      <workItem from="1583411422749" duration="269000" />
+      <workItem from="1583411759841" duration="89000" />
+      <workItem from="1583411862973" duration="36000" />
     </task>
     <servers />
   </component>
@@ -91,22 +104,26 @@
       <screen x="0" y="40" width="1536" height="824" />
     </state>
     <state x="549" y="207" key="FileChooserDialogImpl/0.40.1536.824@0.40.1536.824" timestamp="1582912674898" />
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1583235029794">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1583397732692">
       <screen x="0" y="40" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.40.1536.824@0.40.1536.824" timestamp="1583235029794" />
-    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1583235029794">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.40.1536.824@0.40.1536.824" timestamp="1583397732692" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1583397732692">
       <screen x="0" y="40" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.center/0.40.1536.824@0.40.1536.824" timestamp="1583235029794" />
-    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1583235029794">
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.40.1536.824@0.40.1536.824" timestamp="1583397732692" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1583397732692">
       <screen x="0" y="40" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.left/0.40.1536.824@0.40.1536.824" timestamp="1583235029794" />
-    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1583235029794">
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.40.1536.824@0.40.1536.824" timestamp="1583397732692" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1583397732692">
       <screen x="0" y="40" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.right/0.40.1536.824@0.40.1536.824" timestamp="1583235029794" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.40.1536.824@0.40.1536.824" timestamp="1583397732692" />
+    <state x="0" y="40" width="1339" height="810" key="dock-window-1" timestamp="1583332028328">
+      <screen x="0" y="40" width="1536" height="824" />
+    </state>
+    <state x="0" y="40" width="1339" height="810" key="dock-window-1/0.40.1536.824@0.40.1536.824" timestamp="1583332028328" />
     <state x="425" y="206" key="run.anything.popup" timestamp="1583228421246">
       <screen x="0" y="40" width="1536" height="824" />
     </state>

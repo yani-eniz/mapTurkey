@@ -1,7 +1,7 @@
 let canvas = document.getElementById('cnv');
 canvas.height = document.getElementById('map').offsetHeight;
 canvas.width = document.getElementById('map').offsetWidth;
-const input= document.getElementById('r1');
+const input= document.getElementById('range');
 
 let context= canvas.getContext('2d');
 let JSONstirngs= null;
@@ -14,6 +14,15 @@ let epoch_start;
 let epoch_end;
 let newEpoch_start;
 let newEpoch_end;
+let arrRadars = [];
+let LatLonForRadar = [[27.738, 37.339], [34.334, 41.731], [43.264, 37.725]];
+let arrRadarsVisibility = [];
+let lat1 = 32.687;
+let lat2 = 35.728;
+let lon1 = 42.737;
+let lon2 = 40.552;
+
+
 
 class Planes{
     constructor(Name){
@@ -33,19 +42,12 @@ var map = new ol.Map({
         new ol.layer.Tile({
             source: new ol.source.OSM()
         }),
-        new ol.layer.Graticule({
-            strokeStyle: new ol.style.Stroke({
-                color: 'green',
-                width: 2,
-                lineDash: [0.5,4]
-            }),
-            showLabels: true,
-            wrapX: false
-        })
     ],
     view: new ol.View({
         center: ol.proj.fromLonLat([35.41, 38.82]),
-        zoom: 6
+        zoom: 6,
+        minZoom: 6,
+        maxZoom: 6
     })
 });
 
@@ -144,19 +146,42 @@ function createPolyline(coordinates){
 
 function startFly() {
     let CurrentTime= StartTime;
+    let latVisibility = 32.4854;
+    let lonVisibility = 40.6084;
+    let latRadar = 34.334;
+    let lonRadar = 41.731;
     var del = document.getElementById("delay");
     var delay = del.options[del.selectedIndex].value;
-    let id = setInterval(frame, delay)
+    let id = setInterval(frame, delay);
+    let rad = Math.sqrt(Math.pow(latRadar-latVisibility, 2) + Math.pow(lonRadar - lonVisibility, 2));
     function frame(){
         planes.forEach(element=>{
             if(element.NewDati.indexOf(CurrentTime.toString())!=(-1)){
-                let point1 = new ol.geom.Point(ol.proj.transform(element.LatLon[element.NewDati.indexOf(CurrentTime.toString())], 'EPSG:4326','EPSG:3857'));
-                let point2 = new ol.geom.Point(ol.proj.transform(element.LatLon[element.NewDati.indexOf(CurrentTime.toString())+1], 'EPSG:4326','EPSG:3857'));
-                let x = point2.getCoordinates()[0]-point1.getCoordinates()[0];
-                let y = point2.getCoordinates()[1]-point1.getCoordinates()[1];;
-                let angle = Math.atan2(x,y) - 89.5;
+                    for (let i = 0; i < element.LatLon.length; i++) {
+                        if ((Math.sqrt(Math.pow(latRadar - element.LatLon[i][0], 2) + Math.pow(lonRadar - element.LatLon[i][1], 2))) === rad) {
+                            element.FeatureLink.getStyle().setImage(new ol.style.Icon(({
+                                    anchor: [0.5, 250],
+                                    anchorXUnits: 'fraction',
+                                    anchorYUnits: 'pixels',
+                                    opacity: 1,
+                                    scale: 0.09,
+                                    src: 'assets/img/planeGreen.png'
+                                }))
+                            )
+                        } else if ((Math.sqrt(Math.pow(latRadar - element.LatLon[i][0], 2) + Math.pow(lonRadar - element.LatLon[i][1], 2))) >= rad) {
+                            element.FeatureLink.getStyle().setImage(new ol.style.Icon(({
+                                    anchor: [0.5, 250],
+                                    anchorXUnits: 'fraction',
+                                    anchorYUnits: 'pixels',
+                                    opacity: 1,
+                                    scale: 0.09,
+                                    src: 'assets/img/planeRed.png'
+                                }))
+                            )
+                        }
+                    }
 
-                element.FeatureLink.getStyle().getImage().setRotation(angle);
+
                 element.FeatureLink.setGeometry(new ol.geom.Point(ol.proj.transform(element.LatLon[element.NewDati.indexOf(CurrentTime.toString())], 'EPSG:4326','EPSG:3857')));
 
                 console.log(element.NewDati.indexOf(CurrentTime.toString())+"  current time: " + CurrentTime +"  End time: "+ EndTime);
@@ -190,7 +215,7 @@ function addPlane(lat,lon) {
                 anchorYUnits: 'pixels',
                 opacity: 1,
                 scale: 0.09,
-                src: 'assets/img/plane1.png'
+                src: 'assets/img/plane.png'
             }))
         })
     );
@@ -204,20 +229,22 @@ function addPlane(lat,lon) {
 
 
     function updateValue(e) {
-        iStyle.setImage(new ol.style.Icon( ({
+        iStyle.setImage(new ol.style.Icon(({
                 anchor: [0.4, 46],
                 anchorXUnits: 'fraction',
                 anchorYUnits: 'pixels',
                 opacity: 1,
                 scale: 0.09,
-                src: 'assets/img/plane1.png'
+                src: 'assets/img/plane.png'
             }))
         );
 
         wLayer.getSource().changed();
     }
+
     return iFeature;
 }
+
 
 function changeTime() {
     epoch_start = document.getElementById("epoch_start").value;
@@ -234,3 +261,66 @@ function changeTime() {
     }
 }
 
+function drawRadar(coord){
+    var iconRadar = new ol.Feature({
+        geometry: new ol.geom.Point(ol.proj.transform(coord,'EPSG:4326',
+            'EPSG:3857')),
+        name: 'Radar',
+        population: 4000,
+        rainfall: 500
+    });
+
+    iconRadar.setStyle(
+        new ol.style.Style({
+            image: new ol.style.Icon(({
+                anchor: [0.5, 250],
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'pixels',
+                opacity: 1,
+                scale: 0.09,
+                color: 'red',
+                src: 'assets/img/radar.png'
+            }))
+        })
+    );
+    arrRadars.push(iconRadar);
+    let vectorSource = new ol.source.Vector({
+        features: arrRadars
+    });
+    let vectorLayer = new ol.layer.Vector({
+        source: vectorSource
+    });
+    map.addLayer(vectorLayer);
+    return iconRadar;
+}
+for (let i = 0; i < LatLonForRadar.length; i++) {
+    drawRadar(LatLonForRadar[i]);
+    drawRadarVisibility(LatLonForRadar[i]);
+}
+
+function drawRadarVisibility(coords){
+    var RadarVisibility = new ol.Feature({
+        geometry: new ol.geom.Point(ol.proj.transform(coords,'EPSG:4326', 'EPSG:3857')),
+        name: 'Radar',
+        population: 4000,
+        rainfall: 500
+    });
+
+    RadarVisibility.setStyle(
+        new ol.style.Style({
+            image: new ol.style.Circle({
+                radius: 100,
+                stroke: new ol.style.Stroke({color: 'yellow', width: 2})
+            })
+        }))
+    arrRadarsVisibility.push(RadarVisibility);
+    let vectorSource = new ol.source.Vector({
+        features: arrRadarsVisibility
+    });
+    let vectorLayer = new ol.layer.Vector({
+        source: vectorSource
+    });
+    map.addLayer(vectorLayer);
+    return RadarVisibility;
+
+}
